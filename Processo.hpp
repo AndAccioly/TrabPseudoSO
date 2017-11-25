@@ -1,4 +1,3 @@
-
 #ifndef PROCESSO_H
 #define PROCESSO_H
 
@@ -35,6 +34,7 @@ public:
 	void setImpressora(bool impressoraN);
 	void setScanner(bool scannerN);
 	void setDrivers(bool driversN);
+	void imprimeProcesso();
 
 };
 

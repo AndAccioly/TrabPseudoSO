@@ -1,5 +1,8 @@
 #include "Processo.hpp"
 
+//Guarda todas as informações do processo.
+using namespace std;
+
 Processo::Processo(int idN, int prioridadeN, int memOffsetN, int quantBlocosAlocadosN, int tempoInicioN, bool impressoraN, bool scannerN, bool driversN){
 	id = idN;
 	prioridade = prioridadeN;
@@ -54,3 +57,13 @@ void Processo::setImpressora(bool impressoraN){ impressora = impressoraN; }
 void Processo::setScanner(bool scannerN){ scanner = scannerN; }
 
 void Processo::setDrivers(bool driversN){ drivers = driversN; }
+
+void Processo::imprimeProcesso(){
+	cout << "id:         " << id << "\n";
+	cout << "prioridade: " << prioridade << "\n";
+	cout << "memOffset:  " << memOffset << "\n";
+	cout << "qntBlocos:  " << quantBlocosAlocados << "\n";
+	cout << "tInicio:    " << tempoInicio << "\n";
+	cout << "impressora: " << impressora << "\n";
+	cout << "drivers:    " << drivers << "\n";
+}
