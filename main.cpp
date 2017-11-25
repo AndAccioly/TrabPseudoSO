@@ -3,7 +3,7 @@
 #include <vector>
 #include "Processo.cpp"
 #include <cstdlib>
-#include "ExecutaTudo.cpp"
+#include "Dispatcher.cpp"
 
 using namespace std;
 
@@ -63,8 +63,8 @@ int main(int argc, char *argv[]){
 	
 
 	//executar e processar o vetor de processos
-	ExecutaTudo executaTudo(processos);
-	executaTudo.run();
+	Dispatcher dispatcher(processos);
+	dispatcher.run();
 	arqProcessos.close();
 	arqOperacoes.close();
 
