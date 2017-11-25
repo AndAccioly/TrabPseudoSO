@@ -32,6 +32,8 @@ int main(int argc, char *argv[]){
 	ifstream arqOperacoes;
 
 	string linha;
+	int id = 0;
+	int offset = 0;
 	
 
 	//inicizalizaçao de arquivos de entrada
@@ -49,9 +51,9 @@ int main(int argc, char *argv[]){
 	}
 	
 
-	//inicializacao da fila de processos: iniciar um processo por linha e adicionar no vetor de processos
-	
+	//criacao do vetor de processos: iniciar um processo por linha e adicionar no vetor de processos
 	while(getline(arqProcessos, linha)){
+		id += 1;
 		istringstream ss(linha);
 		char virgula;
 		int tempoInicio, prioridade, tempoProcessamento, memoriaBlocos, impressoraNum, driverNum;
@@ -65,12 +67,10 @@ int main(int argc, char *argv[]){
    		ss >> pediuModem >> virgula;
    		ss >> driverNum >> virgula;
 
-   		Processo* processo = new Processo(0, prioridade, 0, memoriaBlocos, tempoInicio, tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
-
-
-   		cout << linha << "\n";	
+   		Processo* processo = new Processo(1, prioridade, offset, memoriaBlocos, tempoInicio, tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
    		
    		processo->imprimeProcesso();		
+   		offset += memoriaBlocos;
 	}		
 	
 
