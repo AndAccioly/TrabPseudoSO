@@ -4,6 +4,7 @@
 #include "Processo.cpp"
 #include <cstdlib>
 #include "Dispatcher.cpp"
+#include <sstream>
 
 using namespace std;
 
@@ -51,14 +52,25 @@ int main(int argc, char *argv[]){
 	//inicializacao da fila de processos: iniciar um processo por linha e adicionar no vetor de processos
 	
 	while(getline(arqProcessos, linha)){
-		
-		int tempoInicio, prioridade, memoria, impressoraId, driverId;
+		istringstream ss(linha);
+		char virgula;
+		int tempoInicio, prioridade, tempoProcessamento, memoriaBlocos, impressoraNum, driverNum;
    		bool pediuScanner, pediuModem;
-		//Processo* processo = new Processo(id, prioridade, memOffset, quantBlocosAlocados, tempoInicio, impressora, scaner, driver);
-		//processo->imprimeProcesso();
-		//processos.push_back(processo);
+   		ss >> tempoInicio >> virgula;
+   		ss >> prioridade >> virgula;
+   		ss >> tempoProcessamento >> virgula;
+   		ss >> memoriaBlocos >> virgula;
+   		ss >> impressoraNum >> virgula;
+   		ss >> pediuScanner >> virgula;
+   		ss >> pediuModem >> virgula;
+   		ss >> driverNum >> virgula;
 
-		cout << linha << "\n";	
+   		Processo* processo = new Processo(0, prioridade, 0, memoriaBlocos, tempoInicio, tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
+
+
+   		cout << linha << "\n";	
+   		
+   		processo->imprimeProcesso();		
 	}		
 	
 

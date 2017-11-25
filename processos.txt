@@ -1,4 +1,2 @@
-dqeefq
-wef
-wqef sd is98
-wf3 sd b7s sd7 vs97dv
+2, 0, 3, 64, 0, 0, 0, 0
+8, 0, 2, 64, 0, 0, 0, 0
