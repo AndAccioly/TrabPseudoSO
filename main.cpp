@@ -27,6 +27,7 @@ int main(int argc, char *argv[]){
 		//no segundo, haverá a quantidade de 
 
 	vector<Processo*> processos;
+	vector<string> operacoes;
 
 	ifstream arqProcessos;
 	ifstream arqOperacoes;
@@ -34,7 +35,6 @@ int main(int argc, char *argv[]){
 	string linha;
 	int id = 0;
 	int offset = 0;
-	
 
 	//inicizalizaçao de arquivos de entrada
 	if(argc != 3 ){
@@ -53,7 +53,6 @@ int main(int argc, char *argv[]){
 
 	//criacao do vetor de processos: iniciar um processo por linha e adicionar no vetor de processos
 	while(getline(arqProcessos, linha)){
-		id += 1;
 		istringstream ss(linha);
 		char virgula;
 		int tempoInicio, prioridade, tempoProcessamento, memoriaBlocos, impressoraNum, driverNum;
@@ -67,16 +66,26 @@ int main(int argc, char *argv[]){
    		ss >> pediuModem >> virgula;
    		ss >> driverNum >> virgula;
 
-   		Processo* processo = new Processo(1, prioridade, offset, memoriaBlocos, tempoInicio, tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
-   		
-   		processo->imprimeProcesso();		
+		id += 1;
+
+   		Processo* processo = new Processo(id, prioridade, offset, memoriaBlocos, tempoInicio, 
+   			tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
+   		processos.push_back(processo);
+   		processo->imprimeProcesso();
+
    		offset += memoriaBlocos;
-	}		
+	}
+
+	//criacao do vetor de operacoes de arquivos
+	while(getline(arqOperacoes, linha)){
+		operacoes.push_back(linha);		
+	}
 	
 
 	//executar e processar o vetor de processos
-	Dispatcher dispatcher(processos);
+	Dispatcher dispatcher(processos, operacoes);
 	dispatcher.run();
+
 	arqProcessos.close();
 	arqOperacoes.close();
 

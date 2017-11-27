@@ -7,9 +7,10 @@ class Dispatcher{
 
 private:
 	vector<Processo*> processos;
+	vector<string> operacoes;
 
 public:
-	Dispatcher(vector<Processo*> processos);
+	Dispatcher(vector<Processo*> processos, vector<string> operacoes);
 	void run();
 };
 

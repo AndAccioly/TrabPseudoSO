@@ -79,5 +79,5 @@ void Processo::imprimeProcesso(){
 	cout << "tProc:      " << tempoProcessamento << "\n";
 	cout << "impressora: " << impressora << "\n";
 	cout << "drivers:    " << drivers << "\n";
-	cout << "modem:      " << modem << "\n";
+	cout << "modem:      " << modem << "\n\n";
 }
