@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "Processo.cpp"
+#include "GerProcessos.h"
+#include "Processo.h"
 #include <cstdlib>
-#include "Dispatcher.cpp"
+#include "Dispatcher.h"
 #include <sstream>
+
 
 using namespace std;
 
@@ -22,9 +24,9 @@ int main(int argc, char *argv[]){
 
 	//dois arquivos: o primeiro contem as informacoes do processo a serem criados e ferenciados pelo pseudo SO, o segundo traz as descricoes das operacoes
 		//no primeiro, cada linha significa um processo diferente. Campos:
-			//<tempo de inicialização>, <prioridade>, <tempo de processador>, <blocos em memória>, <númerocódigoda impressora requisitada>, 
+			//<tempo de inicialização>, <prioridade>, <tempo de processador>, <blocos em memória>, <númerocódigoda impressora requisitada>,
 			//<requisição do scanner>, <requisição do modem>, <númerocódigodo disco>
-		//no segundo, haverá a quantidade de 
+		//no segundo, haverá a quantidade de
 
 	vector<Processo*> processos;
 	vector<string> operacoes;
@@ -49,7 +51,7 @@ int main(int argc, char *argv[]){
 		cout << "Um dos arquivos não foi aberto corretamente. Verifique o caminho do arquivo.\n";
 		exit(0);
 	}
-	
+
 
 	//criacao do vetor de processos: iniciar um processo por linha e adicionar no vetor de processos
 	while(getline(arqProcessos, linha)){
@@ -68,7 +70,7 @@ int main(int argc, char *argv[]){
 
 		id += 1;
 
-   		Processo* processo = new Processo(id, prioridade, offset, memoriaBlocos, tempoInicio, 
+   		Processo* processo = new Processo(id, prioridade, offset, memoriaBlocos, tempoInicio,
    			tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
    		processos.push_back(processo);
    		processo->imprimeProcesso();
@@ -78,9 +80,9 @@ int main(int argc, char *argv[]){
 
 	//criacao do vetor de operacoes de arquivos
 	while(getline(arqOperacoes, linha)){
-		operacoes.push_back(linha);		
+		operacoes.push_back(linha);
 	}
-	
+
 
 	//executar e processar o vetor de processos
 	Dispatcher dispatcher(processos, operacoes);

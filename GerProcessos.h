@@ -1,9 +1,8 @@
 #ifndef GERPROCESSOS_H
 #define GERPROCESSOS_H
 
-#include <Vector>
+#include "Processo.h"
 #include <list>
-
 using namespace std;
 
 class GerProcessos{

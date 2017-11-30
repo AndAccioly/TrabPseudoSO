@@ -1,4 +1,4 @@
-#include "Processo.hpp"
+#include "Processo.h"
 
 //Guarda todas as informações do processo.
 using namespace std;

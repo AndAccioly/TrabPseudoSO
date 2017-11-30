@@ -1,5 +1,4 @@
-#include "GerProcessos.hpp"
-
+#include "GerProcessos.h"
 #include <iostream>
 
 #define TAMANHO_MAXIMO 1000
@@ -95,13 +94,13 @@ void GerProcessos::escalonarProcesso(){
 		procAtual = NULL;
 	}
 
-	
+
 
 	tempoQuantum = 0;
 }
 
 void GerProcessos::adicionarProcesso(Processo* processo){
-	
+
 	//cout << "Processo " << processo->getId() << " com prioridade " << processo->getPrioridade() << "\n";
 	if(processo->getPrioridade() == 0){
 		cout << "Adicionando a fila de prioridade 0\n";
@@ -115,5 +114,5 @@ void GerProcessos::adicionarProcesso(Processo* processo){
 	}else if(processo->getPrioridade() >= 3){
 		cout << "Adicionando a fila de prioridade 3\n";
 		prioridade3.push_back(processo);
-	} 
+	}
 }
