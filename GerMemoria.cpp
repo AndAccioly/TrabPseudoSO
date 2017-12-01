@@ -3,25 +3,25 @@
 #include <iostream>
 
 GerMemoria::GerMemoria() {
-    tamTempoReal = 64;
-    tamUsuario = 960;
+    this->tamTempoReal = 64;
+    this->tamUsuario = 960;
 }
 
 void GerMemoria::setTamTempoReal(int tamanho){
-    tamTempoReal = tamanho;
+    this->tamTempoReal = tamanho;
     cout << "Tamanho Memoria Tempo Real: " << tamanho << '\n';
 }
 void GerMemoria::setTamUsuario(int tamanho){
-    tamUsuario = tamanho;
+    this->tamUsuario = tamanho;
     cout << "Tamanho Memoria Usuario: " << tamanho << '\n';
 }
 
 int GerMemoria::getTamTempoReal(){
-    return tamTempoReal;
+    return this->tamTempoReal;
 }
 
 int GerMemoria::getTamUsuario(){
-    return tamUsuario;
+    return this->tamUsuario;
 }
 void GerMemoria::addMemTempoReal(int processoId){
     memTempoReal.push_back(processoId);
