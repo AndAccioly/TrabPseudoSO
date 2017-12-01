@@ -29,7 +29,7 @@ void Dispatcher::run(){
 						GerMemoria::instance().addMemTempoReal(processos.at(i)->getId());
 						GerMemoria::instance().setTamTempoReal(GerMemoria::instance().getTamTempoReal() - processos.at(i)->getQuantBlocosAlocados());
 						gerProc->adicionarProcesso(processos.at(i));
-					} else if(processos.at(i)->getQuantBlocosAlocados() < GerMemoria::instance().getTamUsuario()){
+					} else {
 						cout << "Nao ha espaco para alocar processo!\n";
 					}
 				}else{
