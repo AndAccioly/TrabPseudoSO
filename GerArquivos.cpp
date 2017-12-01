@@ -30,6 +30,11 @@ void GerArquivos::addArquivo(int processoId, char arquivoId, int tamanhoArquivo)
                         this->tamanhoOcupado += tamanhoArquivo;
                         flag = 1; //INSERIU O ARQUIVO
                     }
+                } else if (this->arquivos[i] == '0' && tamanhoArquivo == 1){
+                    this->arquivos[i] = arquivoId;
+                    this->indexMap.insert (pair<char,int> (arquivoId, processoId));
+                    this->tamanhoOcupado += tamanhoArquivo;
+                    flag = 1; //INSERIU O ARQUIVO
                 } else contador = 0;
             }
             /** SE NAO FOR POSSIVEL, VERIFICA SE É POSSIVEL INSERIR NO FINAL DA FILA **/
@@ -46,7 +51,7 @@ void GerArquivos::addArquivo(int processoId, char arquivoId, int tamanhoArquivo)
     }
 }
 
-void GerArquivos::remArquivo(int processoId, char arquivoId, int tamanhoArquivo) {
+void GerArquivos::remArquivo(int processoId, char arquivoId) {
 
     //** TEM QUE VALIDAR SE O PROCESSO É 0 1 2 ou 3, PEGAR O PROCESSO PELO ID **//
 
@@ -54,8 +59,8 @@ void GerArquivos::remArquivo(int processoId, char arquivoId, int tamanhoArquivo)
     if (this->indexMap.count(arquivoId) > 0 && this->indexMap.at(arquivoId) == processoId)
     {
         replace(this->arquivos.begin(), this->arquivos.end(), arquivoId, '0');
+        this->tamanhoOcupado -= this->indexMap.count(arquivoId);
         this->indexMap.erase(arquivoId);
-        this->tamanhoOcupado -= tamanhoArquivo;
     }
 }
 

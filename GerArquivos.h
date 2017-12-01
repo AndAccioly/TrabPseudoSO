@@ -27,8 +27,9 @@ class GerArquivos{
         int getTamanhoMaximo();
         int getTamanhoOcupado();
 
+
         void addArquivo(int processoId, char arquivoId, int tamanhoArquivo);
-        void remArquivo(int processoId, char arquivoId, int tamanhoArquivo);
+        void remArquivo(int processoId, char arquivoId);
 
         void imprimeArquivos();
 };

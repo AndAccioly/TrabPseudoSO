@@ -15,15 +15,7 @@ class GerMemoria{
         GerMemoria();
 
     public:
-        // static GerMemoria * instance() {
-        //     if (!gerMem)
-        //     {
-        //         gerMem = new GerMemoria;
-        //         gerMem->setTamTempoReal(64);
-        //         gerMem->setTamUsuario(960);
-        //     }
-        //     return gerMem;
-        // };
+
         static GerMemoria& instance(){
             static GerMemoria instance;
             return instance;
