@@ -1,8 +1,11 @@
 #ifndef GERPROCESSOS_H
 #define GERPROCESSOS_H
 
-#include "Processo.h"
+#include <iostream>
 #include <list>
+#include "Processo.h"
+#include "GerMemoria.h"
+
 using namespace std;
 
 class GerProcessos{
@@ -24,7 +27,6 @@ public:
 	void atualizar(int timer);
 	void escalonarProcesso();
 	void adicionarProcessoAtual();
-
 };
 
 #endif // GERPROCESSOS_H

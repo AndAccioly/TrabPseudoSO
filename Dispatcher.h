@@ -1,10 +1,14 @@
 #ifndef DISPATCHER_H
 #define DISPATCHER_H
 
-#include "Processo.h"
+
 #include <vector>
-#include "GerProcessos.h"
 #include <cstdlib>
+
+#include "Processo.h"
+#include "GerProcessos.h"
+#include "GerMemoria.h"
+
 using namespace std;
 
 class Dispatcher{

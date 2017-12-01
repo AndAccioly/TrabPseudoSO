@@ -1,11 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <sstream>
+#include <cstdlib>
+
+#include "Dispatcher.h"
 #include "GerProcessos.h"
 #include "Processo.h"
-#include <cstdlib>
-#include "Dispatcher.h"
-#include <sstream>
+#include "GerMemoria.h"
+
 
 
 using namespace std;
