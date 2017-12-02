@@ -1,14 +1,11 @@
 #ifndef DISPATCHER_H
 #define DISPATCHER_H
 
-
-#include <vector>
-#include <cstdlib>
-
 #include "Processo.h"
+#include <vector>
 #include "GerProcessos.h"
-#include "GerMemoria.h"
-
+#include "GerArquivos.h"
+#include <cstdlib>
 using namespace std;
 
 class Dispatcher{
@@ -16,9 +13,10 @@ class Dispatcher{
 private:
 	vector<Processo*> processos;
 	vector<string> operacoes;
+	vector<int> processosTempoReal;
 
 public:
-	Dispatcher(vector<Processo*> processos, vector<string> operacoes);
+	Dispatcher(vector<Processo*> processos, vector<string> operacoes, vector<int> processosTempoReal);
 	void run();
 };
 

@@ -1,6 +1,7 @@
 #ifndef GerArquivos_H
 #define GerArquivos_H
 
+#include "GerProcessos.h"
 #include <vector>
 #include <map>
 
@@ -9,10 +10,10 @@ using namespace std;
 class GerArquivos{
 
     private:
-        vector<char> arquivos;
+        vector<char> arquivos; //BLOCOS
         map<char, int> indexMap;
         int tamanhoMaximo;
-        int tamanhoOcupado;
+
         GerArquivos();
 
     public:
@@ -22,13 +23,13 @@ class GerArquivos{
         }
 
         void setTamanhoMaximo(int tamanho);
-        void setTamanhoOcupado(int tamanho);
+
 
         int getTamanhoMaximo();
-        int getTamanhoOcupado();
 
 
-        void addArquivo(int processoId, char arquivoId, int tamanhoArquivo);
+        bool addArquivo(int processoId, char arquivoId, int tamanhoArquivo);
+        bool addArquivo(char arquivoId, int posicaoArquivo, int tamanhoArquivo);
         void remArquivo(int processoId, char arquivoId);
 
         void imprimeArquivos();

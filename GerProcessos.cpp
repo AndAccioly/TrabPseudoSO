@@ -47,7 +47,7 @@ void GerProcessos::atualizar(int tempoTotal){
 				procAtual->setTempoProcessamento(t);
 			}
 
-		//processos ROUND-ROBIN ADAPTATIVO
+			//processos ROUND-ROBIN ADAPTATIVO
 		}else{
 			//cout << "QUANTUM " << tempoQuantum << " " << QUANTUM << "\n";
 			int t = procAtual->getTempoProcessamento();
@@ -68,7 +68,7 @@ void GerProcessos::atualizar(int tempoTotal){
 				procAtual->setTempoProcessamento(t - QUANTUM);
 				if(p < 3){
 					cout << "Atualizando prioridade de " << p << " para " << p+1<< "\n";
-				 	procAtual->setPrioridade(p+1);
+					procAtual->setPrioridade(p+1);
 				}
 				adicionarProcesso(procAtual);
 				escalonarProcesso();
@@ -120,4 +120,10 @@ void GerProcessos::adicionarProcesso(Processo* processo){
 		cout << "Adicionando a fila de prioridade 3\n";
 		prioridade3.push_back(processo);
 	}
+
+}
+
+int GerProcessos::getPrioridadeProcesso(int id){
+	for (int i = 0; i < processosTempoReal.size(); i++) if (processosTempoReal[i] == id) return 0;
+	return 404;
 }

@@ -33,6 +33,7 @@ int main(int argc, char *argv[]){
 
 	vector<Processo*> processos;
 	vector<string> operacoes;
+	vector<int> processosTempoReal;
 
 	ifstream arqProcessos;
 	ifstream arqOperacoes;
@@ -73,10 +74,16 @@ int main(int argc, char *argv[]){
 
 		id += 1;
 
+		if (prioridade == 0) {
+			processosTempoReal.push_back(id);
+		}
+
    		Processo* processo = new Processo(id, prioridade, offset, memoriaBlocos, tempoInicio,
    			tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
    		processos.push_back(processo);
    		processo->imprimeProcesso();
+
+
 
    		offset += memoriaBlocos;
 	}
@@ -88,7 +95,7 @@ int main(int argc, char *argv[]){
 
 
 	//executar e processar o vetor de processos
-	Dispatcher dispatcher(processos, operacoes);
+	Dispatcher dispatcher(processos, operacoes, processosTempoReal);
 	dispatcher.run();
 
 	arqProcessos.close();

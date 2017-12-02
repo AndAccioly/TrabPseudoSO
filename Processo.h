@@ -26,6 +26,8 @@ public:
 	int getQuantBlocosAlocados();
 	int getTempoInicio();
 	int getTempoProcessamento();
+
+
 	bool getImpressora();
 	bool getScanner();
 	bool getDrivers();
