@@ -16,17 +16,25 @@ private:
 	list<Processo*> prioridade2;
 	list<Processo*> prioridade3;
 
+
+
 	//processo ocupando a cpu
 	Processo* procAtual;
-
-	int tempoQuantum;
-public:
 	GerProcessos();
+	int tempoQuantum;
+
+public:
+	static GerProcessos& instance(){
+		static GerProcessos instance;
+		return instance;
+	}
+	vector<int> processosTempoReal;
 	bool estaVazio();		//verifica se as listas estao vazias. Se estiverem, retorna true
 	void adicionarProcesso(Processo* processo);
 	void atualizar(int timer);
 	void escalonarProcesso();
 	void adicionarProcessoAtual();
+	int getPrioridadeProcesso(int id);
 };
 
 #endif // GERPROCESSOS_H
