@@ -14,9 +14,9 @@ void Dispatcher::run(){
 	char nomeArquivo;
 
 	GerMemoria *gerMem = &GerMemoria::instance();
+	GerRecursos *gerRec = &GerRecursos::instance();
 	GerArquivos *gerArq = &GerArquivos::instance();
 	GerProcessos *gerProc = &GerProcessos::instance();
-	// GerMemoria *gerMem = new GerMemoria();
 
 	for(int i = 0; i < processosTempoReal.size(); i++){
 		cout << "****" << processosTempoReal[i];

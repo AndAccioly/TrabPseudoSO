@@ -5,6 +5,7 @@
 #include <vector>
 #include "GerProcessos.h"
 #include "GerArquivos.h"
+#include "GerRecursos.h"
 #include <cstdlib>
 using namespace std;
 
