@@ -1,5 +1,9 @@
 #include "GerRecursos.h"
 
-GerRecursos::GerRecursos() {
+GerRecursos::GerRecursos(){
 
 }
+
+// GerRecursos::inicializarRecurso(){
+//
+// }

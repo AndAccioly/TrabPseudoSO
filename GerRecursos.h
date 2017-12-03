@@ -3,8 +3,19 @@
 
 using namespace std;
 
-class GerProcessos{
+class GerRecursos{
 
+private:
+
+    GerRecursos();
+
+public:
+
+    static GerRecursos& instance(){
+      static GerRecursos instance;
+      return instance;
+    }
+    
 };
 
 #endif // GERRECURSOS_H
