@@ -2,6 +2,10 @@
 #include <algorithm>
 #include <iostream>
 
+/*
+O gerenciador de memória deve garantir que um processo não acesse as regiões de memória de um outro processo.
+*/
+
 GerMemoria::GerMemoria() {
     this->tamTempoReal = 64;
     this->tamUsuario = 960;

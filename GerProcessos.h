@@ -9,6 +9,11 @@
 using namespace std;
 
 class GerProcessos{
+
+/*
+O gerenciador de processos deve ser capaz de agrupar os processos em quatro níveis de prioridades.
+*/
+
 private:
 	//se um processo de usuario (1,2,3) acabar o quantum, cai a prioridade (aumenta o numero)
 	list<Processo*> prioridade0;

@@ -2,6 +2,10 @@
 #include <algorithm>
 #include <iostream>
 
+/*
+O gerenciador de arquivos deve permitir que os processos possam criar e deletar arquivos, de acordo com o modelo de alocação determinado.
+*/
+
 GerArquivos::GerArquivos() {
 
 }

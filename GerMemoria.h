@@ -7,6 +7,10 @@ using namespace std;
 
 class GerMemoria{
 
+/*
+O gerenciador de memória deve garantir que um processo não acesse as regiões de memória de um outro processo.
+*/
+
     private:
         vector<int> memTempoReal;
         vector<int> memUsuario;

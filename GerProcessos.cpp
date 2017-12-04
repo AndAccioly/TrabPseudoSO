@@ -3,7 +3,9 @@
 #define TAMANHO_MAXIMO 1000
 #define QUANTUM 10
 
-
+/*
+O gerenciador de processos deve ser capaz de agrupar os processos em quatro níveis de prioridades.
+*/
 
 GerProcessos::GerProcessos(){
 	tempoQuantum = 0;

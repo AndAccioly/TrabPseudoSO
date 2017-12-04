@@ -9,6 +9,10 @@ using namespace std;
 
 class GerArquivos{
 
+/*
+O gerenciador de arquivos deve permitir que os processos possam criar e deletar arquivos, de acordo com o modelo de alocação determinado.
+*/
+
     private:
         vector<char> arquivos; //BLOCOS
         map<char, int> indexMap;
