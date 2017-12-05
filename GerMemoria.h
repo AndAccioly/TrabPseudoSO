@@ -10,6 +10,9 @@ class GerMemoria{
 /*
 O gerenciador de memória deve garantir que um processo não acesse as regiões de memória de um outro processo.
 */
+    // 64        960
+    // 000000000 1111111111111111111111111111111111111111
+    // 1->8
 
     private:
         vector<int> memTempoReal;

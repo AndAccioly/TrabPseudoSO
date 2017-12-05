@@ -24,7 +24,7 @@ void Dispatcher::run(){
 
 	gerProc->processosTempoReal = processosTempoReal;
 	gerRec->inicializaDispositivos();
-	
+
 	cout << "\n...................EXECUTANDO PROCESSOS...................\n";
 	int timer = 0;
 

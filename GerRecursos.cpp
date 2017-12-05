@@ -18,13 +18,14 @@ GerRecursos::GerRecursos(){
 }
 
 void GerRecursos::inicializaDispositivos(){
-    cout << "Inicializando dispositivos" << '\n';
+    cout << "Inicializando dispositivos..." << '\n';
     this->dispositivos.insert (pair<string,int> ("Scanner", 1));
     this->dispositivos.insert (pair<string,int> ("Printer1", 1));
     this->dispositivos.insert (pair<string,int> ("Printer2", 1));
     this->dispositivos.insert (pair<string,int> ("Modem", 1));
     this->dispositivos.insert (pair<string,int> ("Driver1", 1));
     this->dispositivos.insert (pair<string,int> ("Driver2", 1));
+    cout << "Dispositivos inicializados com sucesso!" << '\n';
 }
 
 void GerRecursos::utilizaDispositivo(string dispositivo){

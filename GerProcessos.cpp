@@ -64,7 +64,6 @@ void GerProcessos::atualizar(int tempoTotal){
 				if (procAtual->getDrivers() == 1) GerRecursos::instance().liberaDispositivo("Driver1");
 				if (procAtual->getDrivers() == 2) GerRecursos::instance().liberaDispositivo("Driver2");
 
-
 				GerMemoria::instance().remMemUsuario(procAtual->getId());
 				GerMemoria::instance().setTamUsuario(GerMemoria::instance().getTamUsuario() + procAtual->getQuantBlocosAlocados());
 
