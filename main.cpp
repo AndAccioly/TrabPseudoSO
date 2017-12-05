@@ -62,7 +62,7 @@ int main(int argc, char *argv[]){
 		istringstream ss(linha);
 		char virgula;
 		int tempoInicio, prioridade, tempoProcessamento, memoriaBlocos, impressoraNum, driverNum;
-   		bool pediuScanner, pediuModem;
+   		int pediuScanner, pediuModem;
    		ss >> tempoInicio >> virgula;
    		ss >> prioridade >> virgula;
    		ss >> tempoProcessamento >> virgula;
@@ -77,6 +77,9 @@ int main(int argc, char *argv[]){
 		if (prioridade == 0) {
 			processosTempoReal.push_back(id);
 		}
+
+		cout << "\n*************\nSCANNER\n***********\n" << pediuScanner;
+
 
    		Processo* processo = new Processo(id, prioridade, offset, memoriaBlocos, tempoInicio,
    			tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);

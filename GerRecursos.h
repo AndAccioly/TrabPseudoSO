@@ -1,6 +1,11 @@
 #ifndef GERRECURSOS_H
 #define GERRECURSOS_H
 
+#include <map>
+#include <string>
+#include <iostream>
+#include <cstdlib>
+
 using namespace std;
 
 // enum dispositivo {
@@ -38,6 +43,7 @@ recursos de I/O.
 private:
 
     GerRecursos();
+    map<string, int> dispositivos;
 
 public:
 
@@ -45,6 +51,9 @@ public:
       static GerRecursos instance;
       return instance;
     }
+    void inicializaDispositivos();
+    void utilizaDispositivo(string dispositivo);
+    void liberaDispositivo(string dispositivo);
     // void inicializarRecurso();
 };
 

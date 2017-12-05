@@ -5,6 +5,7 @@
 #include <list>
 #include "Processo.h"
 #include "GerMemoria.h"
+#include "GerRecursos.h"
 
 using namespace std;
 

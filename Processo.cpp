@@ -3,7 +3,7 @@
 //Guarda todas as informações do processo.
 using namespace std;
 
-Processo::Processo(int idN, int prioridadeN, int memOffsetN, int quantBlocosAlocadosN, int tempoInicioN, int tempoProcessamentoN, bool impressoraN, bool scannerN, bool driversN, bool pediuModemN){
+Processo::Processo(int idN, int prioridadeN, int memOffsetN, int quantBlocosAlocadosN, int tempoInicioN, int tempoProcessamentoN, int impressoraN, int scannerN, int driversN, int pediuModemN){
 	id = idN;
 	prioridade = prioridadeN;
 	memOffset = memOffsetN;
@@ -17,16 +17,16 @@ Processo::Processo(int idN, int prioridadeN, int memOffsetN, int quantBlocosAloc
 }
 
 Processo::Processo(){
-	id = 0;
-	prioridade = 0;
-	memOffset = 2;
-	quantBlocosAlocados = 0;
-	tempoInicio = 1;
-	tempoProcessamento = 2;
-	impressora = true;
-	scanner = true;
-	drivers = false;
-	modem = true;
+	// id = 0;
+	// prioridade = 0;
+	// memOffset = 2;
+	// quantBlocosAlocados = 0;
+	// tempoInicio = 1;
+	// tempoProcessamento = 2;
+	// impressora = true;
+	// scanner = true;
+	// drivers = false;
+	// modem = true;
 }
 
 int Processo::getId(){ return id; }
@@ -41,13 +41,13 @@ int Processo::getTempoInicio(){	return tempoInicio; }
 
 int Processo::getTempoProcessamento(){ return tempoProcessamento; }
 
-bool Processo::getImpressora(){ return impressora; }
+int Processo::getImpressora(){ return impressora; }
 
-bool Processo::getScanner(){ return scanner; }
+int Processo::getScanner(){ return scanner; }
 
-bool Processo::getDrivers(){ return drivers; }
+int Processo::getDrivers(){ return drivers; }
 
-bool Processo::getModem(){ return modem; }
+int Processo::getModem(){ return modem; }
 
 
 void Processo::setId(int idN){ id = idN; }
@@ -62,13 +62,13 @@ void Processo::setTempoInicio(int tempoInicioN){ tempoInicio = tempoInicioN; }
 
 void Processo::setTempoProcessamento(int tempoProcessamentoN){ tempoProcessamento = tempoProcessamentoN; }
 
-void Processo::setImpressora(bool impressoraN){ impressora = impressoraN; }
+void Processo::setImpressora(int impressoraN){ impressora = impressoraN; }
 
-void Processo::setScanner(bool scannerN){ scanner = scannerN; }
+void Processo::setScanner(int scannerN){ scanner = scannerN; }
 
-void Processo::setDrivers(bool driversN){ drivers = driversN; }
+void Processo::setDrivers(int driversN){ drivers = driversN; }
 
-void Processo::setModem(bool modemN){ modem = modemN; }
+void Processo::setModem(int modemN){ modem = modemN; }
 
 void Processo::imprimeProcesso(){
 	cout << "id:         " << id << "\n";
@@ -78,6 +78,7 @@ void Processo::imprimeProcesso(){
 	cout << "tInicio:    " << tempoInicio << "\n";
 	cout << "tProc:      " << tempoProcessamento << "\n";
 	cout << "impressora: " << impressora << "\n";
-	cout << "drivers:    " << drivers << "\n";
-	cout << "modem:      " << modem << "\n\n";
+	cout << "scanner:    " << scanner << "\n";
+	cout << "modem:      " << modem << "\n";
+	cout << "drivers:    " << drivers << "\n\n";
 }

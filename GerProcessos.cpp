@@ -43,7 +43,6 @@ void GerProcessos::atualizar(int tempoTotal){
 				cout << "Fim do processo " << procAtual->getId() << "\n";
 				GerMemoria::instance().remMemTempoReal(procAtual->getId());
 				GerMemoria::instance().setTamTempoReal(GerMemoria::instance().getTamTempoReal() + procAtual->getQuantBlocosAlocados());
-
 				escalonarProcesso();
 			}else{
 				procAtual->setTempoProcessamento(t);
@@ -57,6 +56,14 @@ void GerProcessos::atualizar(int tempoTotal){
 
 			if(t <= tempoQuantum){
 				cout << "Terminando processo " << procAtual->getId() << t << " " << tempoQuantum << "\n";
+
+				if (procAtual->getModem() == 1) GerRecursos::instance().liberaDispositivo("Modem");
+				if (procAtual->getScanner() == 1) GerRecursos::instance().liberaDispositivo("Scanner");
+				if (procAtual->getImpressora() == 1) GerRecursos::instance().liberaDispositivo("Printer1");
+				if (procAtual->getImpressora() == 2) GerRecursos::instance().liberaDispositivo("Printer2");
+				if (procAtual->getDrivers() == 1) GerRecursos::instance().liberaDispositivo("Driver1");
+				if (procAtual->getDrivers() == 2) GerRecursos::instance().liberaDispositivo("Driver2");
+
 
 				GerMemoria::instance().remMemUsuario(procAtual->getId());
 				GerMemoria::instance().setTamUsuario(GerMemoria::instance().getTamUsuario() + procAtual->getQuantBlocosAlocados());
@@ -104,6 +111,16 @@ void GerProcessos::escalonarProcesso(){
 		cout << "todas as filas vazias\n";
 		procAtual = NULL;
 	}
+
+	if (procAtual != NULL && procAtual->getPrioridade() > 0) {
+		if (procAtual->getModem() == 1) GerRecursos::instance().utilizaDispositivo("Modem");
+		if (procAtual->getScanner() == 1) GerRecursos::instance().utilizaDispositivo("Scanner");
+		if (procAtual->getImpressora() == 1) GerRecursos::instance().utilizaDispositivo("Printer1");
+		if (procAtual->getImpressora() == 2) GerRecursos::instance().utilizaDispositivo("Printer2");
+		if (procAtual->getDrivers() == 1) GerRecursos::instance().utilizaDispositivo("Driver1");
+		if (procAtual->getDrivers() == 2) GerRecursos::instance().utilizaDispositivo("Driver2");
+	}
+
 	tempoQuantum = 0;
 }
 

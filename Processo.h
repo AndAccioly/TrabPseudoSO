@@ -11,14 +11,14 @@ private:
 	int quantBlocosAlocados;
 	int tempoInicio;
 	int tempoProcessamento;
-	bool impressora;
-	bool scanner;
-	bool drivers;
-	bool modem;
+	int impressora;
+	int scanner;
+	int drivers;
+	int modem;
 
 public:
 	Processo(int idN, int prioridadeN, int memOffsetN, int quantBlocosAlocadosN,
-			int tempoInicioN, int tempoProcessamentoN, bool impressoraN, bool scannerN, bool driversN, bool pediuModemN);
+			int tempoInicioN, int tempoProcessamentoN, int impressoraN, int scannerN, int driversN, int pediuModemN);
 	Processo();
 	int getId();
 	int getPrioridade();
@@ -28,21 +28,21 @@ public:
 	int getTempoProcessamento();
 
 
-	bool getImpressora();
-	bool getScanner();
-	bool getDrivers();
-	bool getModem();
+	int getImpressora();
+	int getScanner();
+	int getDrivers();
+	int getModem();
 
 	void setId(int idN);
 	void setPrioridade(int prioridade);
 	void setMemOffset(int memOffsetN);
 	void setQuantBlocosAlocados(int quantBlocosAlocadosN);
 	void setTempoInicio(int tempoInicioN);
-	void setImpressora(bool impressoraN);
+	void setImpressora(int impressoraN);
 	void setTempoProcessamento(int tempoProcessamentoN);
-	void setScanner(bool scannerN);
-	void setDrivers(bool driversN);
-	void setModem(bool modemN);
+	void setScanner(int scannerN);
+	void setDrivers(int driversN);
+	void setModem(int modemN);
 	void imprimeProcesso();
 
 };

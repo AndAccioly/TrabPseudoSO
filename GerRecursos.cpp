@@ -17,6 +17,45 @@ GerRecursos::GerRecursos(){
 
 }
 
+void GerRecursos::inicializaDispositivos(){
+    cout << "Inicializando dispositivos" << '\n';
+    this->dispositivos.insert (pair<string,int> ("Scanner", 1));
+    this->dispositivos.insert (pair<string,int> ("Printer1", 1));
+    this->dispositivos.insert (pair<string,int> ("Printer2", 1));
+    this->dispositivos.insert (pair<string,int> ("Modem", 1));
+    this->dispositivos.insert (pair<string,int> ("Driver1", 1));
+    this->dispositivos.insert (pair<string,int> ("Driver2", 1));
+}
+
+void GerRecursos::utilizaDispositivo(string dispositivo){
+
+    map<string, int>::iterator it = this->dispositivos.find(dispositivo);
+
+    if (it->second > 0) {
+        it->second--;
+        cout << "O dispositivo " << dispositivo << " foi alocado!\n\n";
+    }
+    else
+        cout << "O dispositivos " << dispositivo << " esta sendo utilizado no momento!\n\n";
+}
+
+void GerRecursos::liberaDispositivo(string dispositivo){
+
+    map<string, int>::iterator it = this->dispositivos.find(dispositivo);
+
+    if ((it->first == "Scanner" && it->second == 0) ||
+        (it->first == "Printer1" && it->second == 0) ||
+        (it->first == "Printer2" && it->second == 0) ||
+        (it->first == "Modem" && it->second == 0) ||
+        (it->first == "Driver1" && it->second == 0)||
+        (it->first == "Driver2" && it->second == 0)) {
+
+        it->second++;
+        cout << "O dispositivo " << dispositivo << " foi liberado!\n\n";
+    }
+}
+
+
 // void GerRecursos::inicializarRecurso(Recurso tipo_recurso, Dispositivo *dispositivo, char *nome_dispositivo){
 //   std::cout << "Inicializando o dispositivo " << nome_dispositivo << '\n';
 // }
