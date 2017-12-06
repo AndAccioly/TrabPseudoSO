@@ -1,4 +1,5 @@
 #include "Dispatcher.h"
+#include <cstdlib>
 #define ENCERRANDO_EXECUCAO "Encerrando execucao."
 
 Dispatcher::Dispatcher(vector<Processo*> processosN, vector<string> operacoesN, vector<int> processosTempoRealN){
@@ -22,6 +23,16 @@ void Dispatcher::run(){
 		cout << "****" << processosTempoReal[i];
 	}
 
+	for(int j = 0; j < processos.size(); j++){
+		for(int k = 0; k < processos.size(); k++){
+			if(processos.at(j)->getTempoInicio() == processos.at(k)->getTempoInicio() && k!=j){
+				cout << "Entrada inválida: dois processos com mesmo tempo de início. \n";
+				exit(0);
+			}
+		}
+		
+	}
+
 	gerProc->processosTempoReal = processosTempoReal;
 	gerRec->inicializaDispositivos();
 
@@ -29,6 +40,7 @@ void Dispatcher::run(){
 	int timer = 0;
 
 	int quantProcessos = processos.size();
+
 
 	while( (processos.size() > 0) || (!gerProc->estaVazio()) ){
 
@@ -71,8 +83,6 @@ void Dispatcher::run(){
 		gerProc->atualizar(timer);
 		timer = timer + 1;
 	}
-
-	
 
 	cout << "\nSistemas de arquivos => \n";
 
