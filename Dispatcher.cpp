@@ -36,34 +36,43 @@ void Dispatcher::run(){
 		//verifica dentre os processos se algum deles esta na vez de ser executado. Se estiver, manda para o gerProc
 		for(int i = 0; i < processos.size(); i++){
 			if(processos.at(i)->getTempoInicio() == timer){
-
-				cout << "Processo " << processos.at(i)->getId() << " vai ser adicionado\n";
-
+				int adicionou;
+				//cout << "Processo " << processos.at(i)->getId() << " vai ser adicionado\n";
+				cout << "Dispatcher ==>\n";
+				processos.at(i)->imprimeProcesso();
 				if(processos.at(i)->getPrioridade() == 0) {
 					if(processos.at(i)->getQuantBlocosAlocados() <= gerMem->getTamTempoReal()) {
-						gerMem->addMemTempoReal(processos.at(i)->getId());
-						gerMem->setTamTempoReal(gerMem->getTamTempoReal() - processos.at(i)->getQuantBlocosAlocados());
-						gerProc->adicionarProcesso(processos.at(i));
+						adicionou = gerProc->adicionarProcesso(processos.at(i));
+						if(adicionou == 0){
+							gerMem->addMemTempoReal(processos.at(i)->getId());
+							gerMem->setTamTempoReal(gerMem->getTamTempoReal() - processos.at(i)->getQuantBlocosAlocados());
+						}
+						
 					} else {
 						cout << "Nao ha espaco para alocar processo!\n";
 					}
 				}else{
 					if(processos.at(i)->getQuantBlocosAlocados() <= gerMem->getTamUsuario()) {
-						gerMem->addMemUsuario(processos.at(i)->getId());
-						gerMem->setTamUsuario(gerMem->getTamUsuario() - processos.at(i)->getQuantBlocosAlocados());
-						gerProc->adicionarProcesso(processos.at(i));
+						adicionou = gerProc->adicionarProcesso(processos.at(i));
+						if(adicionou == 0){
+							gerMem->addMemUsuario(processos.at(i)->getId());
+							gerMem->setTamUsuario(gerMem->getTamUsuario() - processos.at(i)->getQuantBlocosAlocados());
+						}
+						
 					} else {
 						cout << "Nao ha espaco para alocar o processo!\n";
 					}
 				}
-				processos.erase(processos.begin() + i);
+				if(adicionou == 0){
+					processos.erase(processos.begin() + i);
+				}
 			}
 		}
 		gerProc->atualizar(timer);
 		timer = timer + 1;
 	}
 
-	cout << ENCERRANDO_EXECUCAO << "\n";
+	
 
 	cout << "\nSistemas de arquivos => \n";
 
@@ -102,4 +111,5 @@ void Dispatcher::run(){
 	}
 	gerArq->imprimeArquivos();
 
+	cout << ENCERRANDO_EXECUCAO << "\n";
 }

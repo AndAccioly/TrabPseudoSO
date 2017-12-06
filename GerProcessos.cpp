@@ -40,7 +40,7 @@ void GerProcessos::atualizar(int tempoTotal){
 			int t = procAtual->getTempoProcessamento() - 1;
 			if(t < 0){
 				//processo terminou a execucao: retira da cpu e escalona um novo
-				cout << "Fim do processo " << procAtual->getId() << "\n";
+				cout << "P" << procAtual->getId() << " return SIGINT\n";
 				GerMemoria::instance().remMemTempoReal(procAtual->getId());
 				GerMemoria::instance().setTamTempoReal(GerMemoria::instance().getTamTempoReal() + procAtual->getQuantBlocosAlocados());
 				escalonarProcesso();
@@ -55,7 +55,7 @@ void GerProcessos::atualizar(int tempoTotal){
 			int p = procAtual->getPrioridade();
 
 			if(t <= tempoQuantum){
-				cout << "Terminando processo " << procAtual->getId() << t << " " << tempoQuantum << "\n";
+				cout << "P" << procAtual->getId() << " return SIGINT\n";
 
 				if (procAtual->getModem() == 1) GerRecursos::instance().liberaDispositivo("Modem");
 				if (procAtual->getScanner() == 1) GerRecursos::instance().liberaDispositivo("Scanner");
@@ -88,26 +88,26 @@ void GerProcessos::atualizar(int tempoTotal){
 
 void GerProcessos::escalonarProcesso(){
 	//cout << "ESCALONANDO" << "\n";
-	cout << prioridade0.size() << " " << prioridade1.size() << " " << prioridade2.size() << " " << prioridade3.size() << "\n";
+	//cout << prioridade0.size() << " " << prioridade1.size() << " " << prioridade2.size() << " " << prioridade3.size() << "\n";
 
 	if(prioridade0.size() > 0){
 		procAtual = prioridade0.front();
 		prioridade0.pop_front();
-		cout << "Escalonando processo " << procAtual->getId() << " da fila 0 " << "\n";
+		//cout << "Escalonando processo " << procAtual->getId() << " da fila 0 " << "\n";
 	}else if (prioridade1.size() > 0){
 		procAtual = prioridade1.front();
 		prioridade1.pop_front();
-		cout << "Escalonando processo " << procAtual->getId() << " da fila 1 " << "\n";
+		//cout << "Escalonando processo " << procAtual->getId() << " da fila 1 " << "\n";
 	}else if (prioridade2.size() > 0){
 		procAtual = prioridade2.front();
 		prioridade2.pop_front();
-		cout << "Escalonando processo " << procAtual->getId() << " da fila 2 " << "\n";
+		//cout << "Escalonando processo " << procAtual->getId() << " da fila 2 " << "\n";
 	}else if (prioridade3.size() > 0){
 		procAtual = prioridade3.front();
 		prioridade3.pop_front();
-		cout << "Escalonando processo " << procAtual->getId() << " da fila 3 " << "\n";
+		//cout << "Escalonando processo " << procAtual->getId() << " da fila 3 " << "\n";
 	}else{
-		cout << "todas as filas vazias\n";
+		//cout << "todas as filas vazias\n";
 		procAtual = NULL;
 	}
 
@@ -123,21 +123,26 @@ void GerProcessos::escalonarProcesso(){
 	tempoQuantum = 0;
 }
 
-void GerProcessos::adicionarProcesso(Processo* processo){
+int GerProcessos::adicionarProcesso(Processo* processo){
 	//cout << "Processo " << processo->getId() << " com prioridade " << processo->getPrioridade() << "\n";
+	if(prioridade0.size() + prioridade1.size() + prioridade2.size() + prioridade3.size() > TAMANHO_MAXIMO){
+		cout << "FILA DE PROCESSOS CHEIA\n";
+		return 1;
+	}
 	if(processo->getPrioridade() == 0){
-		cout << "Adicionando a fila de prioridade 0\n";
+		//cout << "Adicionando a fila de prioridade 0\n";
 		prioridade0.push_back(processo);
 	}else if(processo->getPrioridade() == 1){
-		cout << "Adicionando a fila de prioridade 1\n";
+		//cout << "Adicionando a fila de prioridade 1\n";
 		prioridade1.push_back(processo);
 	}else if(processo->getPrioridade() == 2){
-		cout << "Adicionando a fila de prioridade 2\n";
+		//cout << "Adicionando a fila de prioridade 2\n";
 		prioridade2.push_back(processo);
 	}else if(processo->getPrioridade() >= 3){
-		cout << "Adicionando a fila de prioridade 3\n";
+		//cout << "Adicionando a fila de prioridade 3\n";
 		prioridade3.push_back(processo);
 	}
+	return 0;
 
 }
 

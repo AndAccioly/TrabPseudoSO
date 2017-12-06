@@ -72,9 +72,9 @@ void Processo::setModem(int modemN){ modem = modemN; }
 
 void Processo::imprimeProcesso(){
 	cout << "id:         " << id << "\n";
+	cout << "offset:     " << memOffset << "\n";
+	cout << "blocos:     " << quantBlocosAlocados << "\n";
 	cout << "prioridade: " << prioridade << "\n";
-	cout << "memOffset:  " << memOffset << "\n";
-	cout << "qntBlocos:  " << quantBlocosAlocados << "\n";
 	cout << "tInicio:    " << tempoInicio << "\n";
 	cout << "tProc:      " << tempoProcessamento << "\n";
 	cout << "impressora: " << impressora << "\n";

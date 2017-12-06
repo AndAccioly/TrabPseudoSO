@@ -36,7 +36,7 @@ public:
 	}
 	vector<int> processosTempoReal;
 	bool estaVazio();		//verifica se as listas estao vazias. Se estiverem, retorna true
-	void adicionarProcesso(Processo* processo);
+	int adicionarProcesso(Processo* processo);
 	void atualizar(int timer);
 	void escalonarProcesso();
 	void adicionarProcessoAtual();

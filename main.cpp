@@ -78,15 +78,13 @@ int main(int argc, char *argv[]){
 			processosTempoReal.push_back(id);
 		}
 
-		cout << "\n*************\nSCANNER\n***********\n" << pediuScanner;
+		//cout << "\n*************\nSCANNER\n***********\n" << pediuScanner;
 
 
    		Processo* processo = new Processo(id, prioridade, offset, memoriaBlocos, tempoInicio,
    			tempoProcessamento, impressoraNum, pediuScanner, driverNum, pediuModem);
    		processos.push_back(processo);
-   		processo->imprimeProcesso();
-
-
+   		//processo->imprimeProcesso();
 
    		offset += memoriaBlocos;
 	}
